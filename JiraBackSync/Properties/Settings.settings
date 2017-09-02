@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JiraBackSync.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="JiraUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">epopodyanets</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">eugeni.popodyanets@cbsinteractive.com</Value>
+    </Setting>
+    <Setting Name="BaseTmetricApiUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://app.tmetric.com</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,15 @@
+bin
+obj
+TestResults
+packages
+*.user
+*.suo
+*.Publish.xml
+Settings.StyleCop
+StyleCop.Cache
+_ReSharper.*
+App.Debug.config
+App.Release.config
+SlowCheetah.Transforms.targets
+*.sqlite
+.vs
