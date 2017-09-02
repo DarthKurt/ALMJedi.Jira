@@ -17,11 +17,10 @@ namespace JiraBackSync
         {
             try
             {
-                const int activeAccountId = 10880;
                 var projectList = new List<int>
                 {
-                    0,
-                    16494
+                    0, // None
+                    Settings.Default.TMetricProject
                 };
 
                 var startOfWeek = StartOfWeek(DateTime.Today,
@@ -43,7 +42,7 @@ namespace JiraBackSync
                 };
 
                 var tmetricLogs = apiClient.GetDetailedReportAsync(projectList, null, new List<string>(), true, true, null, null,
-                    activeAccountId, startOfWeek, endOfWeek).GetAwaiter().GetResult();
+                    Settings.Default.TMetricAccountId, startOfWeek, endOfWeek).GetAwaiter().GetResult();
 
                 var aggregated = tmetricLogs.GroupBy(r => new {r.Day, r.IssueId})
                     .Select(DetailedReportRowAggregatedTimeEntryAdapter.CreateLogEntry)

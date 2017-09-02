@@ -49,5 +49,23 @@ namespace JiraBackSync.Properties {
                 return ((string)(this["BaseTmetricApiUrl"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10880")]
+        public int TMetricAccountId {
+            get {
+                return ((int)(this["TMetricAccountId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16494")]
+        public int TMetricProject {
+            get {
+                return ((int)(this["TMetricProject"]));
+            }
+        }
     }
 }
