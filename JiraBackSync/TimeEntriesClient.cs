@@ -59,9 +59,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<GroupTimeEntries>> GetGroupTimeEntriesAllAsync(int accountId, DateTime? timeRangeStartTime, DateTime? timeRangeEndTime, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/timeentries/group?");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -95,10 +92,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ObservableCollection<GroupTimeEntries>);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ObservableCollection<GroupTimeEntries>>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<GroupTimeEntries>>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -117,15 +113,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -141,12 +135,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<GroupTimeEntries>> GetGroupTimeEntriesAsync(int accountId, int userGroupId, DateTime? timeRangeStartTime, DateTime? timeRangeEndTime, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (userGroupId == null)
-                throw new ArgumentNullException(nameof(userGroupId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/timeentries/group/{userGroupId}?");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -203,15 +191,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -227,9 +213,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<WebToolIssueDuration>> PostExternalIssueTimeEntriesAsync(int accountId, IEnumerable<WebToolIssueIdentifier> identifiers, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/timeentries/external/summary");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -263,10 +246,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ObservableCollection<WebToolIssueDuration>);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ObservableCollection<WebToolIssueDuration>>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<WebToolIssueDuration>>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -285,15 +267,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -309,12 +289,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<TimeEntry>> GetTimeEntriesAsync(int accountId, int userProfileId, DateTime? timeRangeStartTime, DateTime? timeRangeEndTime, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (userProfileId == null)
-                throw new ArgumentNullException(nameof(userProfileId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/timeentries/{userProfileId}?");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -349,10 +323,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ObservableCollection<TimeEntry>);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ObservableCollection<TimeEntry>>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<TimeEntry>>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -371,8 +344,7 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
@@ -395,12 +367,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<object> PostTimeEntryAsync(int accountId, int userProfileId, TimeEntry timeEntry, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (userProfileId == null)
-                throw new ArgumentNullException(nameof(userProfileId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/timeentries/{userProfileId}");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -435,10 +401,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(object);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -457,15 +422,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -481,12 +444,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<object> PostTimeEntriesAsync(int accountId, int userProfileId, IEnumerable<TimeEntry> timeEntries, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (userProfileId == null)
-                throw new ArgumentNullException(nameof(userProfileId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/timeentries/{userProfileId}/bulk");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -521,10 +478,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(object);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -543,15 +499,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 

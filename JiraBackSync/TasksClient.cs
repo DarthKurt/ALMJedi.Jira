@@ -69,9 +69,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<ProjectTask>> GetTasksAsync(int accountId, IEnumerable<int> filterAssigneeList, IEnumerable<int> filterGroupList, IEnumerable<int> filterProjectList, IEnumerable<int> filterTagList, bool? filterCompleted, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tasks?");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -108,10 +105,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ObservableCollection<ProjectTask>);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ObservableCollection<ProjectTask>>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<ProjectTask>>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -130,15 +126,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -154,9 +148,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ProjectTask> PostTaskAsync(int accountId, ProjectTask task, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tasks");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -190,10 +181,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ProjectTask);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ProjectTask>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ProjectTask>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -212,15 +202,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -236,12 +224,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ProjectTask> GetTaskAsync(int accountId, int taskId, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (taskId == null)
-                throw new ArgumentNullException(nameof(taskId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tasks/{taskId}");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -273,10 +255,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ProjectTask);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ProjectTask>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ProjectTask>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -295,15 +276,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -319,12 +298,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task PutTaskAsync(int accountId, int taskId, ProjectTask task, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (taskId == null)
-                throw new ArgumentNullException(nameof(taskId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tasks/{taskId}");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -367,7 +340,7 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
+
                             response.Dispose();
                     }
                 }
@@ -391,12 +364,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task DeleteTaskAsync(int accountId, int taskId, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (taskId == null)
-                throw new ArgumentNullException(nameof(taskId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tasks/{taskId}");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -436,15 +403,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -460,9 +425,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<object> PutTasksAsync(int accountId, IEnumerable<int> taskId, IEnumerable<ProjectTask> tasks, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             if (taskId == null)
                 throw new ArgumentNullException(nameof(taskId));
 
@@ -501,10 +463,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(object);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -523,15 +484,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 

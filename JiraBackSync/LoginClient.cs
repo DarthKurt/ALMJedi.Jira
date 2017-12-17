@@ -6,10 +6,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using AngleSharp.Parser.Html;
 using JiraBackSync.Data;
 using JiraBackSync.Properties;
-using RestSharp.Extensions.MonoHttp;
 
 namespace JiraBackSync
 {

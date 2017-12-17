@@ -59,12 +59,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<TimelineEntry>> GetTimelineEntriesAsync(int accountId, int userProfileId, DateTime? timeRangeStartTime, DateTime? timeRangeEndTime, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (userProfileId == null)
-                throw new ArgumentNullException(nameof(userProfileId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/timeline/{accountId}?");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -99,10 +93,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ObservableCollection<TimelineEntry>);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ObservableCollection<TimelineEntry>>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<TimelineEntry>>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -121,15 +114,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -141,13 +132,11 @@ namespace JiraBackSync
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <param name="accountId"></param>
         /// <returns>OK</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<object> PostTimelineEntriesAsync(int accountId, IEnumerable<TimelineEntry> timelineEntries, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/timeline/{accountId}");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -181,10 +170,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(object);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<object>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -203,15 +191,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 

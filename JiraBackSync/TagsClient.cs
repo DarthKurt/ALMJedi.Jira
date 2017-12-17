@@ -58,9 +58,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<Tag>> GetTagsAsync(int accountId, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tags");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -91,10 +88,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(ObservableCollection<Tag>);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<ObservableCollection<Tag>>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<Tag>>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -113,15 +109,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -173,10 +167,9 @@ namespace JiraBackSync
                         if (status == "200")
                         {
                             var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result = default(Tag);
                             try
                             {
-                                result = JsonConvert.DeserializeObject<Tag>(responseData, _settings.Value);
+                                var result = JsonConvert.DeserializeObject<Tag>(responseData, _settings.Value);
                                 return result;
                             }
                             catch (Exception exception)
@@ -195,15 +188,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -267,15 +258,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 
@@ -291,12 +280,6 @@ namespace JiraBackSync
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task DeleteTagAsync(int accountId, int tagId, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
-
-            if (tagId == null)
-                throw new ArgumentNullException(nameof(tagId));
-
             var urlBuilder = new StringBuilder();
             urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/tags/{tagId}");
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
@@ -336,15 +319,13 @@ namespace JiraBackSync
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client != null)
-                    client.Dispose();
+                client.Dispose();
             }
         }
 

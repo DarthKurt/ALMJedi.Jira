@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace JiraBackSync.Data
 {
-    [GeneratedCode("NJsonSchema", "9.4.8.0")]
+    [GeneratedCode("NJsonSchema", "9.10.14.0")]
     public class DetailedReportRow : INotifyPropertyChanged
     {
         private DateTime? _day;
@@ -17,15 +17,16 @@ namespace JiraBackSync.Data
         private int? _userProfileId;
         private string _project;
         private int? _projectId;
+        private string _projectCode;
         private string _client;
         private int? _clientId;
         private int? _projectTaskId;
-        private string _timeEntry;
+        private string _description;
         private string _issueUrl;
         private string _issueId;
         private ObservableCollection<string> _tags;
-        private long? _duration;
-        private long? _billableDuration;
+        private double? _duration;
+        private double? _billableDuration;
         private ObservableCollection<Money> _billableAmount;
 
         /// <summary>The noon timestamp of reported day (#65331)</summary>
@@ -61,7 +62,8 @@ namespace JiraBackSync.Data
             get => _endTime;
             set
             {
-                if (_endTime == value) return;
+                if (_endTime == value)
+                    return;
                 _endTime = value;
                 RaisePropertyChanged();
             }
@@ -119,6 +121,19 @@ namespace JiraBackSync.Data
             }
         }
 
+        [JsonProperty("projectCode", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string ProjectCode
+        {
+            get => _projectCode;
+            set
+            {
+                if (_projectCode == value)
+                    return;
+                _projectCode = value;
+                RaisePropertyChanged();
+            }
+        }
+
         [JsonProperty("client", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public string Client
         {
@@ -158,15 +173,15 @@ namespace JiraBackSync.Data
             }
         }
 
-        [JsonProperty("timeEntry", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public string TimeEntry
+        [JsonProperty("description", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        public string Description
         {
-            get => _timeEntry;
+            get => _description;
             set
             {
-                if (_timeEntry == value)
+                if (_description == value)
                     return;
-                _timeEntry = value;
+                _description = value;
                 RaisePropertyChanged();
             }
         }
@@ -211,24 +226,25 @@ namespace JiraBackSync.Data
         }
 
         [JsonProperty("duration", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public long? Duration
+        public double? Duration
         {
             get => _duration;
             set
             {
-                if (_duration == value) return;
+                if (_duration != null && _duration == value)
+                    return;
                 _duration = value;
                 RaisePropertyChanged();
             }
         }
 
         [JsonProperty("billableDuration", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
-        public long? BillableDuration
+        public double? BillableDuration
         {
             get => _billableDuration;
             set
             {
-                if (_billableDuration == value)
+                if (_billableDuration != null && _billableDuration == value)
                     return;
                 _billableDuration = value;
                 RaisePropertyChanged();

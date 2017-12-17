@@ -64,62 +64,60 @@ namespace JiraBackSync.Data
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
             urlBuilder.Replace("{groupId}", Uri.EscapeDataString(Convert.ToString(groupId, CultureInfo.InvariantCulture)));
 
-            var client_ = new HttpClient();
+            var client = new HttpClient();
             try
             {
-                using (var request_ = new HttpRequestMessage())
+                using (var request = new HttpRequestMessage())
                 {
-                    request_.Method = new HttpMethod("GET");
-                    request_.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    request.Method = new HttpMethod("GET");
+                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    PrepareRequest(client_, request_, urlBuilder);
+                    PrepareRequest(client, request, urlBuilder);
                     var url = urlBuilder.ToString();
-                    request_.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url);
+                    request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client, request, url);
 
-                    var response = await client_.SendAsync(request_, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
-                        var headers = response.Headers.ToDictionary(h_ => h_.Key, h_ => h_.Value);
+                        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value);
                         foreach (var item in response.Content.Headers)
                             headers[item.Key] = item.Value;
 
-                        ProcessResponse(client_, response);
+                        ProcessResponse(client, response);
 
-                        var status_ = ((int)response.StatusCode).ToString();
-                        if (status_ == "200")
+                        var status = ((int)response.StatusCode).ToString();
+                        if (status == "200")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                             try
                             {
-                                var result_ = JsonConvert.DeserializeObject<UserGroup>(responseData_, _settings.Value);
-                                return result_;
+                                var result = JsonConvert.DeserializeObject<UserGroup>(responseData, _settings.Value);
+                                return result;
                             }
                             catch (Exception exception)
                             {
-                                throw new SwaggerException("Could not deserialize the response body.", status_, responseData_, headers, exception);
+                                throw new SwaggerException("Could not deserialize the response body.", status, responseData, headers, exception);
                             }
                         }
                         else
-                        if (status_ != "200" && status_ != "204")
+                        if (status != "200" && status != "204")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status_, responseData_, headers, null);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status, responseData, headers, null);
                         }
 
                         return default(UserGroup);
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client_ != null)
-                    client_.Dispose();
+                client.Dispose();
             }
         }
 
@@ -149,52 +147,50 @@ namespace JiraBackSync.Data
             urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
             urlBuilder.Replace("{groupId}", Uri.EscapeDataString(Convert.ToString(groupId, CultureInfo.InvariantCulture)));
 
-            var client_ = new HttpClient();
+            var client = new HttpClient();
             try
             {
-                using (var request_ = new HttpRequestMessage())
+                using (var request = new HttpRequestMessage())
                 {
-                    var content_ = new StringContent(JsonConvert.SerializeObject(clientGroup, _settings.Value));
-                    content_.Headers.ContentType.MediaType = "application/json";
-                    request_.Content = content_;
-                    request_.Method = new HttpMethod("PUT");
+                    var content = new StringContent(JsonConvert.SerializeObject(clientGroup, _settings.Value));
+                    content.Headers.ContentType.MediaType = "application/json";
+                    request.Content = content;
+                    request.Method = new HttpMethod("PUT");
 
-                    PrepareRequest(client_, request_, urlBuilder);
+                    PrepareRequest(client, request, urlBuilder);
                     var url = urlBuilder.ToString();
-                    request_.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url);
+                    request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client, request, url);
 
-                    var response = await client_.SendAsync(request_, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
-                        var headers = response.Headers.ToDictionary(h_ => h_.Key, h_ => h_.Value);
+                        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value);
                         foreach (var item in response.Content.Headers)
                             headers[item.Key] = item.Value;
 
-                        ProcessResponse(client_, response);
+                        ProcessResponse(client, response);
 
-                        var status_ = ((int)response.StatusCode).ToString();
-                        if (status_ == "204")
+                        var status = ((int)response.StatusCode).ToString();
+                        if (status == "204")
                         {
                         }
                         else
-                        if (status_ != "200" && status_ != "204")
+                        if (status != "200" && status != "204")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status_, responseData_, headers, null);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status, responseData, headers, null);
                         }
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client_ != null)
-                    client_.Dispose();
+                client.Dispose();
             }
         }
 
@@ -210,60 +206,53 @@ namespace JiraBackSync.Data
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task DeleteGroupAsync(int accountId, int groupId, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
+            var urlBuilder = new StringBuilder();
+            urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/usergroups/{groupId}");
+            urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
+            urlBuilder.Replace("{groupId}", Uri.EscapeDataString(Convert.ToString(groupId, CultureInfo.InvariantCulture)));
 
-            if (groupId == null)
-                throw new ArgumentNullException(nameof(groupId));
-
-            var urlBuilder_ = new StringBuilder();
-            urlBuilder_.Append(BaseUrl).Append("/api/accounts/{accountId}/usergroups/{groupId}");
-            urlBuilder_.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{groupId}", Uri.EscapeDataString(Convert.ToString(groupId, CultureInfo.InvariantCulture)));
-
-            var client_ = new HttpClient();
+            var client = new HttpClient();
             try
             {
-                using (var request_ = new HttpRequestMessage())
+                using (var request = new HttpRequestMessage())
                 {
-                    request_.Method = new HttpMethod("DELETE");
+                    request.Method = new HttpMethod("DELETE");
 
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url = urlBuilder_.ToString();
-                    request_.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url);
+                    PrepareRequest(client, request, urlBuilder);
+                    var url = urlBuilder.ToString();
+                    request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client, request, url);
 
-                    var response = await client_.SendAsync(request_, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
-                        var headers = response.Headers.ToDictionary(h_ => h_.Key, h_ => h_.Value);
+                        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value);
                         foreach (var item in response.Content.Headers)
                             headers[item.Key] = item.Value;
 
-                        ProcessResponse(client_, response);
+                        ProcessResponse(client, response);
 
-                        var status_ = ((int)response.StatusCode).ToString();
-                        if (status_ == "204")
+                        var status = ((int)response.StatusCode).ToString();
+                        if (status == "204")
                         {
                         }
                         else
-                        if (status_ != "200" && status_ != "204")
+                        if (status != "200" && status != "204")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status_, responseData_, headers, null);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status, responseData, headers, null);
                         }
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client_ != null)
-                    client_.Dispose();
+
+                    client.Dispose();
             }
         }
 
@@ -279,70 +268,64 @@ namespace JiraBackSync.Data
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         public async Task<ObservableCollection<UserGroup>> GetGroupsAsync(int accountId, CancellationToken cancellationToken)
         {
-            if (accountId == null)
-                throw new ArgumentNullException(nameof(accountId));
+            var urlBuilder = new StringBuilder();
+            urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/usergroups");
+            urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
 
-            var urlBuilder_ = new StringBuilder();
-            urlBuilder_.Append(BaseUrl).Append("/api/accounts/{accountId}/usergroups");
-            urlBuilder_.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
-
-            var client_ = new HttpClient();
+            var client = new HttpClient();
             try
             {
-                using (var request_ = new HttpRequestMessage())
+                using (var request = new HttpRequestMessage())
                 {
-                    request_.Method = new HttpMethod("GET");
-                    request_.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    request.Method = new HttpMethod("GET");
+                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url = urlBuilder_.ToString();
-                    request_.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url);
+                    PrepareRequest(client, request, urlBuilder);
+                    var url = urlBuilder.ToString();
+                    request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client, request, url);
 
-                    var response = await client_.SendAsync(request_, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
-                        var headers = response.Headers.ToDictionary(h_ => h_.Key, h_ => h_.Value);
+                        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value);
                         foreach (var item in response.Content.Headers)
                             headers[item.Key] = item.Value;
 
-                        ProcessResponse(client_, response);
+                        ProcessResponse(client, response);
 
-                        var status_ = ((int)response.StatusCode).ToString();
-                        if (status_ == "200")
+                        var status = ((int)response.StatusCode).ToString();
+                        if (status == "200")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ObservableCollection<UserGroup>);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                             try
                             {
-                                result_ = JsonConvert.DeserializeObject<ObservableCollection<UserGroup>>(responseData_, _settings.Value);
-                                return result_;
+                                var result = JsonConvert.DeserializeObject<ObservableCollection<UserGroup>>(responseData, _settings.Value);
+                                return result;
                             }
                             catch (Exception exception)
                             {
-                                throw new SwaggerException("Could not deserialize the response body.", status_, responseData_, headers, exception);
+                                throw new SwaggerException("Could not deserialize the response body.", status, responseData, headers, exception);
                             }
                         }
                         else
-                        if (status_ != "200" && status_ != "204")
+                        if (status != "200" && status != "204")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status_, responseData_, headers, null);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status, responseData, headers, null);
                         }
 
                         return default(ObservableCollection<UserGroup>);
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client_ != null)
-                    client_.Dispose();
+                client.Dispose();
             }
         }
 
@@ -361,70 +344,67 @@ namespace JiraBackSync.Data
             if (accountId == null)
                 throw new ArgumentNullException(nameof(accountId));
 
-            var urlBuilder_ = new StringBuilder();
-            urlBuilder_.Append(BaseUrl).Append("/api/accounts/{accountId}/usergroups");
-            urlBuilder_.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
+            var urlBuilder = new StringBuilder();
+            urlBuilder.Append(BaseUrl).Append("/api/accounts/{accountId}/usergroups");
+            urlBuilder.Replace("{accountId}", Uri.EscapeDataString(Convert.ToString(accountId, CultureInfo.InvariantCulture)));
 
-            var client_ = new HttpClient();
+            var client = new HttpClient();
             try
             {
-                using (var request_ = new HttpRequestMessage())
+                using (var request = new HttpRequestMessage())
                 {
-                    var content_ = new StringContent(JsonConvert.SerializeObject(clientGroup, _settings.Value));
-                    content_.Headers.ContentType.MediaType = "application/json";
-                    request_.Content = content_;
-                    request_.Method = new HttpMethod("POST");
-                    request_.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var content = new StringContent(JsonConvert.SerializeObject(clientGroup, _settings.Value));
+                    content.Headers.ContentType.MediaType = "application/json";
+                    request.Content = content;
+                    request.Method = new HttpMethod("POST");
+                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url = urlBuilder_.ToString();
-                    request_.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url);
+                    PrepareRequest(client, request, urlBuilder);
+                    var url = urlBuilder.ToString();
+                    request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client, request, url);
 
-                    var response = await client_.SendAsync(request_, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
-                        var headers = response.Headers.ToDictionary(h_ => h_.Key, h_ => h_.Value);
+                        var headers = response.Headers.ToDictionary(h => h.Key, h => h.Value);
                         foreach (var item in response.Content.Headers)
                             headers[item.Key] = item.Value;
 
-                        ProcessResponse(client_, response);
+                        ProcessResponse(client, response);
 
-                        var status_ = ((int)response.StatusCode).ToString();
-                        if (status_ == "200")
+                        var status = ((int)response.StatusCode).ToString();
+                        if (status == "200")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(UserGroup);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                             try
                             {
-                                result_ = JsonConvert.DeserializeObject<UserGroup>(responseData_, _settings.Value);
-                                return result_;
+                                var result = JsonConvert.DeserializeObject<UserGroup>(responseData, _settings.Value);
+                                return result;
                             }
                             catch (Exception exception)
                             {
-                                throw new SwaggerException("Could not deserialize the response body.", status_, responseData_, headers, exception);
+                                throw new SwaggerException("Could not deserialize the response body.", status, responseData, headers, exception);
                             }
                         }
                         else
-                        if (status_ != "200" && status_ != "204")
+                        if (status != "200" && status != "204")
                         {
-                            var responseData_ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status_, responseData_, headers, null);
+                            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response.StatusCode + ").", status, responseData, headers, null);
                         }
 
                         return default(UserGroup);
                     }
                     finally
                     {
-                        if (response != null)
-                            response.Dispose();
+                        response?.Dispose();
                     }
                 }
             }
             finally
             {
-                if (client_ != null)
-                    client_.Dispose();
+                client.Dispose();
             }
         }
 

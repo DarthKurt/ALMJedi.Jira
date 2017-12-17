@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using Atlassian.Jira;
 using JiraBackSync.Data;
 using JiraBackSync.Properties;
+using Newtonsoft.Json;
 
 namespace JiraBackSync
 {
@@ -57,6 +59,7 @@ namespace JiraBackSync
 
                 if (result == null)
                 {
+                    Console.WriteLine("No issues processed.");
                     Console.ReadKey();
                     return;
                 }
@@ -101,6 +104,7 @@ namespace JiraBackSync
 
 #if DEBUG
             settings.EnableRequestTrace = true;
+            settings.JsonSerializerSettings.TraceWriter = new VsTraceWriter();
 #endif
             Console.WriteLine("Jira password:");
             var jira = Jira.CreateRestClient(
@@ -116,24 +120,37 @@ namespace JiraBackSync
             
             try
             {
-                var issues = await GetIssuesAsync(issuesKeys, jira).ConfigureAwait(false);
-                return await UpdateLogsAsync(issues, logs).ConfigureAwait(false);
+                //var issues = await GetIssuesAsync(issuesKeys, jira).ConfigureAwait(false);
+                return await UpdateLogsAsync(issuesKeys, logs, jira).ConfigureAwait(false);
+            }
+            catch(JsonReaderException jre)
+            {
+                Console.WriteLine(jre);
+
+#if DEBUG
+                Debug.WriteLine(jre);
+#endif
+                return null;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+#if DEBUG
+                Debug.WriteLine(e);
+#endif
                 return null;
             }
         }
 
-        private static Task<IDictionary<string,Issue>> GetIssuesAsync(IEnumerable<ComparableString> issues, Jira jira)
-        {
-            return jira.Issues.GetIssuesAsync(issues.Select(k => k.Value));
-        }
+        //private static Task<IDictionary<string,Issue>> GetIssuesAsync(IEnumerable<ComparableString> issues, Jira jira)
+        //{
+        //    return jira.Issues.GetIssuesAsync(issues.Select(k => k.Value));
+        //}
 
-        private static async Task<Tuple<int, TimeSpan, TimeSpan>> UpdateLogsAsync(IDictionary<string, Issue> issues, IEnumerable<AggregatedTimeEntry> logs)
+        private static async Task<Tuple<int, TimeSpan, TimeSpan>> UpdateLogsAsync(IEnumerable<ComparableString> issues, IEnumerable<AggregatedTimeEntry> logs, Jira jira)
         {
-            var issueList = issues.Values.Where(i => i.Labels.Contains("SED-Backlog") && i.Labels.Contains("SED-PAX")).ToList();
+            //var issueList = issues.Values.Where(i => i.Labels.Contains("SED-Backlog") && i.Labels.Contains("SED-PAX")).ToList();
+            var keys = issues as IList<ComparableString> ?? issues.ToList();
 
             var issueCount = 0;
             var timeAddedCount = new TimeSpan();
@@ -146,12 +163,13 @@ namespace JiraBackSync
                     throw new InvalidOperationException("Log could not be more 20 hours per day.");
                 }
 
-                var issue = issueList.FirstOrDefault(i => i.Key.Equals(log.IssueKey));
+                //var issue = issueList.FirstOrDefault(i => i.Key.Equals(log.IssueKey));
+                var issueKey = keys.FirstOrDefault(k => k.Equals(log.IssueKey))?.Value;
 
-                if (issue == null)
+                if (issueKey == null)
                     continue;
 
-                var worklogs = await issue.GetWorklogsAsync().ConfigureAwait(false);
+                var worklogs = await jira.Issues.GetWorklogsAsync(issueKey).ConfigureAwait(false);
 
                 var neededLogs = worklogs.Where(wl =>
                     wl.StartDate.HasValue
@@ -168,9 +186,9 @@ namespace JiraBackSync
                 if (log.TimeLog.Minutes > 0)
                     logString.Append($" {log.TimeLog.Minutes}m");
 
-                var newWorklog = new Worklog(logString.ToString(), log.StartDate.ToLocalTime());
+                var newWorklog = new Worklog(logString.ToString(), log.StartDate.ToLocalTime(), log.LogComments.Value);
 
-                await issue.AddWorklogAsync(newWorklog)
+                await jira.Issues.AddWorklogAsync(issueKey, newWorklog)
                     .ConfigureAwait(false);
                 issueCount++;
                 timeAddedCount = timeAddedCount.Add(log.TimeLog);
@@ -178,7 +196,7 @@ namespace JiraBackSync
                 if (ewl == null)
                     continue;
 
-                await issue.DeleteWorklogAsync(ewl)
+                await jira.Issues.DeleteWorklogAsync(issueKey, ewl.Id)
                     .ConfigureAwait(false);
                 timeDeletedCount += ewl.TimeSpentInSeconds;
             }
