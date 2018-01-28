@@ -25,10 +25,10 @@ namespace JiraBackSync
                     Settings.Default.TMetricProject
                 };
 
-                var startOfWeek = StartOfWeek(DateTime.Today,
+                var startOfWeek = StartOfWeek(DateTime.Today.AddDays(Settings.Default.WeekOffset * 7),
                     CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek);
 
-                var endOfWeek = EndOfWeek(DateTime.Today,
+                var endOfWeek = EndOfWeek(DateTime.Today.AddDays(Settings.Default.WeekOffset * 7),
                     CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek);
 
                 Console.WriteLine("TMetric password:");

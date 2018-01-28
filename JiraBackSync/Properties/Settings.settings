@@ -17,5 +17,8 @@
     <Setting Name="TMetricProject" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">16494</Value>
     </Setting>
+    <Setting Name="WeekOffset" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
