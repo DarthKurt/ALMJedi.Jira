@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.TMetric", "JiraBackSync.TMetric\JiraBackSync.TMetric.csproj", "{36DE6906-920E-43CC-9BC8-9BA65025E029}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.TMetric", "JiraBackSync.TMetric\Jira.BackSync.TMetric.csproj", "{36DE6906-920E-43CC-9BC8-9BA65025E029}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.TMetric.Data", "JiraBackSync.TMetric.Data\JiraBackSync.TMetric.Data.csproj", "{CC406564-7E0A-4B74-B06A-563F96C52A24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.TMetric.Data", "JiraBackSync.TMetric.Data\Jira.BackSync.TMetric.Data.csproj", "{CC406564-7E0A-4B74-B06A-563F96C52A24}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.Core", "JiraBackSync.Core\JiraBackSync.Core.csproj", "{1EAF8ED6-E07A-4D2A-818F-38642ECDB1EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.Core", "JiraBackSync.Core\Jira.BackSync.Core.csproj", "{1EAF8ED6-E07A-4D2A-818F-38642ECDB1EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.Service", "JiraBackSync.Service\JiraBackSync.Service.csproj", "{927B7E50-D5DD-49D3-BF4D-6A210BD2E394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.Service", "JiraBackSync.Service\Jira.BackSync.Service.csproj", "{927B7E50-D5DD-49D3-BF4D-6A210BD2E394}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.Jira", "JiraBackSync.Jira\JiraBackSync.Jira.csproj", "{5E02F675-8754-42EB-A61B-EB6C6B2112F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.Jira", "JiraBackSync.Jira\Jira.BackSync.Jira.csproj", "{5E02F675-8754-42EB-A61B-EB6C6B2112F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.Security", "JiraBackSync.Security\JiraBackSync.Security.csproj", "{4273CD45-87F6-4C3A-B376-CE3FD128B6A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.Security", "JiraBackSync.Security\Jira.BackSync.Security.csproj", "{4273CD45-87F6-4C3A-B376-CE3FD128B6A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.Storage", "JiraBackSync.Storage\JiraBackSync.Storage.csproj", "{229516FC-771B-41DA-83ED-1ECAE995E08E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.Storage", "JiraBackSync.Storage\Jira.BackSync.Storage.csproj", "{229516FC-771B-41DA-83ED-1ECAE995E08E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JiraBackSync.Configuration", "JiraBackSync.Configuration\JiraBackSync.Configuration.csproj", "{C4FAABCD-0C76-46C1-AAFA-022D7036737B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.BackSync.Configuration", "JiraBackSync.Configuration\Jira.BackSync.Configuration.csproj", "{C4FAABCD-0C76-46C1-AAFA-022D7036737B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
