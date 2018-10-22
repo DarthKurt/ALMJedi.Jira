@@ -13,3 +13,5 @@ App.Release.config
 SlowCheetah.Transforms.targets
 *.sqlite
 .vs
+Publish
+*.7z
