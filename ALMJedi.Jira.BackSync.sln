@@ -27,6 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.Templates.Functions", "Functions\Jira.Templates.Functions.csproj", "{6033B656-598F-4341-87A0-36810ED650D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jira.Infrastructure.Functions", "Libraries\Jira.Infrastructure.Functions\Jira.Infrastructure.Functions.csproj", "{865CE550-27CD-4B3B-A834-90B89262DFE4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jira.Core", "Libraries\Jira.Core\Jira.Core.csproj", "{AC841341-BB66-4E11-9920-E53E49E00DDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{6033B656-598F-4341-87A0-36810ED650D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6033B656-598F-4341-87A0-36810ED650D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6033B656-598F-4341-87A0-36810ED650D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{865CE550-27CD-4B3B-A834-90B89262DFE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865CE550-27CD-4B3B-A834-90B89262DFE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865CE550-27CD-4B3B-A834-90B89262DFE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865CE550-27CD-4B3B-A834-90B89262DFE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC841341-BB66-4E11-9920-E53E49E00DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC841341-BB66-4E11-9920-E53E49E00DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC841341-BB66-4E11-9920-E53E49E00DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC841341-BB66-4E11-9920-E53E49E00DDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +95,8 @@ Global
 		{229516FC-771B-41DA-83ED-1ECAE995E08E} = {F83C768E-FB09-4E90-BD32-C4E812D11411}
 		{C4FAABCD-0C76-46C1-AAFA-022D7036737B} = {DEF2D133-5F82-4025-A552-880B1DB2C594}
 		{6033B656-598F-4341-87A0-36810ED650D6} = {762EDF95-9AE1-4DC9-9061-1F54D090B4C9}
+		{865CE550-27CD-4B3B-A834-90B89262DFE4} = {F83C768E-FB09-4E90-BD32-C4E812D11411}
+		{AC841341-BB66-4E11-9920-E53E49E00DDD} = {F83C768E-FB09-4E90-BD32-C4E812D11411}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E05815E8-910D-469B-900C-004483C28E2F}

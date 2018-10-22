@@ -1,5 +1,6 @@
 using System.IO;
 using System.Threading.Tasks;
+using Jira.Infrastructure.Functions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -14,6 +15,7 @@ namespace Jira.Templates.Functions
         [FunctionName("GetLabels")]
         public static async Task<IActionResult> RunAsync(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [Inject] ITest iTest,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");

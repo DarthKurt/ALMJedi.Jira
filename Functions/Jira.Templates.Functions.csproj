@@ -4,7 +4,11 @@
     <AzureFunctionsVersion>V2</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.22" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.23" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Libraries\Jira.Core\Jira.Core.csproj" />
+    <ProjectReference Include="..\Libraries\Jira.Infrastructure.Functions\Jira.Infrastructure.Functions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
