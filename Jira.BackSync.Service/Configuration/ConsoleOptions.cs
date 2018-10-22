@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.Service.Configuration
+﻿namespace Jira.BackSync.Service.Configuration
 {
     internal class ConsoleOptions
     {

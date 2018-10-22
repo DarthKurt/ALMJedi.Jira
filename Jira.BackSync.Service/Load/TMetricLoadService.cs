@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JiraBackSync.Core.Data;
-using JiraBackSync.Core.Utils;
+using Jira.BackSync.Core.Data;
+using Jira.BackSync.Core.Utils;
 using Microsoft.Extensions.Logging;
 
-namespace JiraBackSync.Service.Load
+namespace Jira.BackSync.Service.Load
 {
     internal class TmetricLoadService : ILoadService
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JiraBackSync.Core.Utils;
+using Jira.BackSync.Core.Utils;
 
-namespace JiraBackSync.Configuration
+namespace Jira.BackSync.Configuration
 {
 
     /// <summary>

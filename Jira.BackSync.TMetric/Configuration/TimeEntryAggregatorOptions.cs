@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.TMetric.Configuration
+﻿namespace Jira.BackSync.TMetric.Configuration
 {
     public sealed class TimeEntryAggregatorOptions
     {

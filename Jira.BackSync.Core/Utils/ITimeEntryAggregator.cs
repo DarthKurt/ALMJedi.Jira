@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using JiraBackSync.Core.Data;
+using Jira.BackSync.Core.Data;
 
-namespace JiraBackSync.Core.Utils
+namespace Jira.BackSync.Core.Utils
 {
     public interface ITimeEntryAggregator
     {

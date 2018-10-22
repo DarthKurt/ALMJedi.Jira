@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.Storage.Data;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Storage.Data;
 using LiteDB;
 using Microsoft.Extensions.Logging;
 
-namespace JiraBackSync.Storage
+namespace Jira.BackSync.Storage
 {
     /// <summary>
     /// An XML repository backed by a file system.

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.Service.Load;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Service.Load;
 using Microsoft.Extensions.Logging;
 
-namespace JiraBackSync.Service.Sync
+namespace Jira.BackSync.Service.Sync
 {
     internal class SyncService: ISyncService
     {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.DataProtection.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace JiraBackSync.Security.Configuration
+namespace Jira.BackSync.Security.Configuration
 {
     public static class DataProtectionBuilderExtensions
     {

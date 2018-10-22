@@ -1,18 +1,18 @@
 ﻿using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using JiraBackSync.Core;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.Security;
-using JiraBackSync.Security.Configuration;
-using JiraBackSync.Storage;
-using JiraBackSync.Storage.Configuration;
+using Jira.BackSync.Core;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Security;
+using Jira.BackSync.Security.Configuration;
+using Jira.BackSync.Storage;
+using Jira.BackSync.Storage.Configuration;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace JiraBackSync.Configuration
+namespace Jira.BackSync.Configuration
 {
     internal class Program
     {

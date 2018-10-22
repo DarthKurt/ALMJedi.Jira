@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using JiraBackSync.Core.Data;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.TMetric.Configuration;
+using Jira.BackSync.Core.Data;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.TMetric.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace JiraBackSync.TMetric
+namespace Jira.BackSync.TMetric
 {
     public class TimeEntryAggregator: ITimeEntryAggregator
     {

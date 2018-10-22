@@ -2,7 +2,7 @@
 using System.Text;
 using Newtonsoft.Json;
 
-namespace JiraBackSync.TMetric
+namespace Jira.BackSync.TMetric
 {
     public abstract class BaseApiClient
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace JiraBackSync.Core.Utils
+namespace Jira.BackSync.Core.Utils
 {
     public interface IXmlStorage
     {

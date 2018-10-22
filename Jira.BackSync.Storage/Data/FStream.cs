@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace JiraBackSync.Storage.Data
+namespace Jira.BackSync.Storage.Data
 {
     internal class FStream : MemoryStream
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Globalization;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.Service.Configuration;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Service.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace JiraBackSync.Service
+namespace Jira.BackSync.Service
 {
     internal class TimeUtils: ITimeUtils
     {

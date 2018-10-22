@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.Jira.Configuration
+﻿namespace Jira.BackSync.Jira.Configuration
 {
     public class UploaderServiceOptions
     {

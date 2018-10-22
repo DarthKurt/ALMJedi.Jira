@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace JiraBackSync.Service.Sync
+namespace Jira.BackSync.Service.Sync
 {
     internal interface ISyncService
     {

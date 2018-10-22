@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace JiraBackSync.TMetric
+namespace Jira.BackSync.TMetric
 {
     public class SwaggerException : Exception
     {

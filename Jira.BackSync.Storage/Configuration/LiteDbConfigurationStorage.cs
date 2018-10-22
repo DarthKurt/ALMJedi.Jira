@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 
-namespace JiraBackSync.Storage.Configuration
+namespace Jira.BackSync.Storage.Configuration
 {
     public static class LiteDbConfigurationStorage
     {

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <StartupObject>JiraBackSync.Service.Program</StartupObject>
+    <StartupObject>Jira.BackSync.Service.Program</StartupObject>
     <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -14,11 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JiraBackSync.Configuration\JiraBackSync.Configuration.csproj" />
-    <ProjectReference Include="..\JiraBackSync.Jira\JiraBackSync.Jira.csproj" />
-    <ProjectReference Include="..\JiraBackSync.Security\JiraBackSync.Security.csproj" />
-    <ProjectReference Include="..\JiraBackSync.Storage\JiraBackSync.Storage.csproj" />
-    <ProjectReference Include="..\JiraBackSync.TMetric\JiraBackSync.TMetric.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.Configuration\Jira.BackSync.Configuration.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.Jira\Jira.BackSync.Jira.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.Security\Jira.BackSync.Security.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.TMetric\Jira.BackSync.TMetric.csproj" />
   </ItemGroup>
 
 </Project>

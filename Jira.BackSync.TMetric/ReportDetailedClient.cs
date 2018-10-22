@@ -9,10 +9,10 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using JiraBackSync.TMetric.Data;
+using Jira.BackSync.TMetric.Data;
 using Newtonsoft.Json;
 
-namespace JiraBackSync.TMetric
+namespace Jira.BackSync.TMetric
 {
     internal sealed class ReportDetailedClient : BaseApiClient
     {

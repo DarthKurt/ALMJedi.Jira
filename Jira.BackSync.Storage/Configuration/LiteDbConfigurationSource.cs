@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace JiraBackSync.Storage.Configuration
+namespace Jira.BackSync.Storage.Configuration
 {
     /// <summary>
     /// Represents a LiteDb file as an <see cref="IConfigurationSource"/>.

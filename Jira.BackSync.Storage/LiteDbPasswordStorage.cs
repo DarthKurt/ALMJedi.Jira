@@ -1,8 +1,8 @@
-﻿using JiraBackSync.Core.Utils;
-using JiraBackSync.Storage.Data;
+﻿using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Storage.Data;
 using LiteDB;
 
-namespace JiraBackSync.Storage
+namespace Jira.BackSync.Storage
 {
     /// <summary>
     /// An XML repository backed by a file system.

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JiraBackSync.Core.Data
+namespace Jira.BackSync.Core.Data
 {
     public class AggregatedTimeEntry
     {

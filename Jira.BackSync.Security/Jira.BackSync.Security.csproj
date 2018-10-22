@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JiraBackSync.Core\JiraBackSync.Core.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="2.1.0" />
+    <ProjectReference Include="..\Jira.BackSync.Core\Jira.BackSync.Core.csproj" />
   </ItemGroup>
 </Project>

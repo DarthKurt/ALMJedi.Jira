@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using JiraBackSync.Core.Data;
+using Jira.BackSync.Core.Data;
 
-namespace JiraBackSync.Service.Load
+namespace Jira.BackSync.Service.Load
 {
     internal interface ILoadService
     {

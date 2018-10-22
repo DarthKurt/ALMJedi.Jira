@@ -5,25 +5,25 @@ using System.Security.Cryptography.X509Certificates;
 using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
-using JiraBackSync.Core;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.Jira;
-using JiraBackSync.Jira.Configuration;
-using JiraBackSync.Security;
-using JiraBackSync.Security.Configuration;
-using JiraBackSync.Service.Configuration;
-using JiraBackSync.Service.Load;
-using JiraBackSync.Service.Sync;
-using JiraBackSync.Storage;
-using JiraBackSync.Storage.Configuration;
-using JiraBackSync.TMetric;
-using JiraBackSync.TMetric.Configuration;
+using Jira.BackSync.Core;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Jira;
+using Jira.BackSync.Jira.Configuration;
+using Jira.BackSync.Security;
+using Jira.BackSync.Security.Configuration;
+using Jira.BackSync.Service.Configuration;
+using Jira.BackSync.Service.Load;
+using Jira.BackSync.Service.Sync;
+using Jira.BackSync.Storage;
+using Jira.BackSync.Storage.Configuration;
+using Jira.BackSync.TMetric;
+using Jira.BackSync.TMetric.Configuration;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace JiraBackSync.Service
+namespace Jira.BackSync.Service
 {
     internal class Program
     {

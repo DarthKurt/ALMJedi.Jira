@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.Storage.Data
+﻿namespace Jira.BackSync.Storage.Data
 {
     internal class PasswordEntry
     {

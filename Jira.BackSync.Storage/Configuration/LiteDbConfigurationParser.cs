@@ -4,7 +4,7 @@ using System.Linq;
 using LiteDB;
 using Microsoft.Extensions.Configuration;
 
-namespace JiraBackSync.Storage.Configuration
+namespace Jira.BackSync.Storage.Configuration
 {
     internal class LiteDbConfigurationParser
     {

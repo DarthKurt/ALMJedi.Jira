@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.Security.Configuration
+﻿namespace Jira.BackSync.Security.Configuration
 {
     public sealed class EncryptionServiceOptions
     {

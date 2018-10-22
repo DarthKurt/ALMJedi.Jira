@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JiraBackSync.Core.Utils
+namespace Jira.BackSync.Core.Utils
 {
     public interface ITimeUtils
     {

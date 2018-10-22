@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using LiteDB;
 using Microsoft.Extensions.Configuration;
 
-namespace JiraBackSync.Storage.Configuration
+namespace Jira.BackSync.Storage.Configuration
 {
     /// <summary>
     /// A LiteDb file based <see cref="FileConfigurationProvider"/>.

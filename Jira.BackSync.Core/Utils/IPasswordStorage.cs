@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.Core.Utils
+﻿namespace Jira.BackSync.Core.Utils
 {
     public interface IPasswordStorage
     {

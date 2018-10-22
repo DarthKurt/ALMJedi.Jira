@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 
-namespace JiraBackSync.TMetric.Data
+namespace Jira.BackSync.TMetric.Data
 {
     public class DetailedReportRow : INotifyPropertyChanged
     {

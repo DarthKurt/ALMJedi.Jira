@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JiraBackSync.Core\JiraBackSync.Core.csproj" />
-    <ProjectReference Include="..\JiraBackSync.TMetric.Data\JiraBackSync.TMetric.Data.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.Core\Jira.BackSync.Core.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.TMetric.Data\Jira.BackSync.TMetric.Data.csproj" />
   </ItemGroup>
 
 </Project>

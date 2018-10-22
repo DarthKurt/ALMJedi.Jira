@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JiraBackSync.Core\JiraBackSync.Core.csproj" />
+    <ProjectReference Include="..\Jira.BackSync.Core\Jira.BackSync.Core.csproj" />
   </ItemGroup>
 
 </Project>

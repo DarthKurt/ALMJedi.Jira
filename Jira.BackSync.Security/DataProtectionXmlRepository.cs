@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Linq;
-using JiraBackSync.Core.Utils;
+using Jira.BackSync.Core.Utils;
 using Microsoft.AspNetCore.DataProtection.Repositories;
 
-namespace JiraBackSync.Security
+namespace Jira.BackSync.Security
 {
     public class DataProtectionXmlRepository: IXmlRepository
     {

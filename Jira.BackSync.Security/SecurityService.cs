@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using JiraBackSync.Core.Utils;
+using Jira.BackSync.Core.Utils;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
-namespace JiraBackSync.Security
+namespace Jira.BackSync.Security
 {
     public class SecurityService: ISecurityService
     {

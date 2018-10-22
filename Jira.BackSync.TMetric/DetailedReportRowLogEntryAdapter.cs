@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JiraBackSync.Core.Data;
-using JiraBackSync.TMetric.Data;
+using Jira.BackSync.Core.Data;
+using Jira.BackSync.TMetric.Data;
 
-namespace JiraBackSync.TMetric
+namespace Jira.BackSync.TMetric
 {
     internal static class DetailedReportRowAggregatedTimeEntryAdapter
     {

@@ -1,4 +1,4 @@
-﻿namespace JiraBackSync.Core
+﻿namespace Jira.BackSync.Core
 {
     public static class SharedConfiguration
     {

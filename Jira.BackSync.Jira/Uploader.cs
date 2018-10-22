@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Atlassian.Jira;
-using JiraBackSync.Core.Data;
-using JiraBackSync.Core.Utils;
-using JiraBackSync.Jira.Configuration;
+using Jira.BackSync.Core.Data;
+using Jira.BackSync.Core.Utils;
+using Jira.BackSync.Jira.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace JiraBackSync.Jira
+namespace Jira.BackSync.Jira
 {
     public class Uploader: IUploader
     {
