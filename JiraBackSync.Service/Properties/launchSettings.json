@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "JiraBackSync.Service": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <StartupObject>JiraBackSync.Service.Program</StartupObject>
+    <RuntimeIdentifiers>win-x64;linux-x64</RuntimeIdentifiers>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JiraBackSync.Configuration\JiraBackSync.Configuration.csproj" />
+    <ProjectReference Include="..\JiraBackSync.Jira\JiraBackSync.Jira.csproj" />
+    <ProjectReference Include="..\JiraBackSync.Security\JiraBackSync.Security.csproj" />
+    <ProjectReference Include="..\JiraBackSync.Storage\JiraBackSync.Storage.csproj" />
+    <ProjectReference Include="..\JiraBackSync.TMetric\JiraBackSync.TMetric.csproj" />
+  </ItemGroup>
+
+</Project>
